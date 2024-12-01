@@ -25,3 +25,15 @@ variable "image_version" {
   description = "the version of image to run"
   default = null
 }
+
+variable "sms_notification" {
+  type = string
+  description = "sms to be notified for cloud run job error"
+  default = null
+}
+
+variable "email_notification" {
+  type = string
+  description = "email to be notified for cloud run job error"
+  default = null
+}
