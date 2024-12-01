@@ -1,17 +1,14 @@
-import re
 from playwright.sync_api import Page, expect
 
-def test_has_title(page: Page):
-    page.goto("https://playwright.dev/")
 
-    # Expect a title "to contain" a substring.
-    expect(page).to_have_title(re.compile("Playwright"))
+# def test_saif_title(page: Page):
+#     page.goto("https://www.saif.com/aboutsaif.html")
+#
+#     # Expect a title "to contain" a substring.
+#     expect(page).to_have_title("About SAIF | Oregon's Workers' Compensation Insurance Leader")
 
-def test_get_started_link(page: Page):
-    page.goto("https://playwright.dev/")
 
-    # Click the get started link.
-    page.get_by_role("link", name="Get started").click()
+def test_tent_price(page: Page):
+    page.goto("https://www.backcountry.com/marmot-superalloy-tent-2-person-3-season")
 
-    # Expects page to have a heading with the name of Installation.
-    expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+    expect(page.get_by_text("45% off")).to_be_visible()

@@ -1,27 +1,20 @@
-# resource "google_artifact_registry_repository" "playwright-python" {
-#   location      = var.region
-#   repository_id = var.repository_id
-#   description   = "example docker repository for python playwright test scripts"
-#   format        = "DOCKER"
-#
-# }
-#
-# locals {
-#   l = google_artifact_registry_repository.playwright-python.location
-#   p = google_artifact_registry_repository.playwright-python.project
-#   r = google_artifact_registry_repository.playwright-python.repository_id
-#   image = "${local.l}-docker.pkg.dev/${local.p}/${local.r}/${var.image_name}:${var.image_version}"
-# }
+resource "google_artifact_registry_repository" "playwright_repo" {
+  location      = var.region
+  repository_id = var.repository_id
+  description   = "example docker repository for python playwright test scripts"
+  format        = "DOCKER"
+
+}
 
 # create local data to store registry info for image name
 locals {
-  l = data.google_artifact_registry_repository.playwright-repo.location
-  p = data.google_artifact_registry_repository.playwright-repo.project
-  r = data.google_artifact_registry_repository.playwright-repo.repository_id
+  l = data.google_artifact_registry_repository.playwright_repo.location
+  p = data.google_artifact_registry_repository.playwright_repo.project
+  r = data.google_artifact_registry_repository.playwright_repo.repository_id
   image = "${local.l}-docker.pkg.dev/${local.p}/${local.r}/${var.image_name}:${var.image_version}"
 }
 
-data "google_artifact_registry_repository" "playwright-repo" {
+data "google_artifact_registry_repository" "playwright_repo" {
   location      = var.region
   repository_id = var.repository_id
 }
